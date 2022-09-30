@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @session %>
+
+<%= form_with(model: @session) do |form| %>
+    <% if @session.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@session.errors.count, "error") %> prohibited this @session from being saved:</h2>
+  
+        <ul>
+          <% @session.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div>
+      <%= form.label :available_earliest_at, style: "display: block" %>
+      <%= form.datetime_field :available_earliest_at %>
+    </div>
+  
+    <div>
+      <%= form.label :available_latest_at, style: "display: block" %>
+      <%= form.datetime_field :available_latest_at %>
+    </div>
+  
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+  
